@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ilya Verbitskiy</Authors>
+    <Company>WebStoating s.r.o.</Company>
+    <Description>Syntax highlighting for Markdig using Prism.js library</Description>
+    <Copyright>Copyright © 2020 Ilya Verbitskiy</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.22.0" />
+  </ItemGroup>
+
+</Project>
