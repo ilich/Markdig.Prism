@@ -39,7 +39,9 @@ namespace Markdig.Prism
             var code = ExtractSourceCode(node);
 
             renderer
-                .Write("<pre>")
+                .Write("<pre")
+                .WriteAttributes(attributes)
+                .Write(">")
                 .Write("<code")
                 .WriteAttributes(attributes)
                 .Write(">")
