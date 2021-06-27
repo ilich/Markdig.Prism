@@ -27,7 +27,7 @@ namespace Markdig.Prism
             }
 
             var languageCode = fencedCodeBlock.Info.Replace(parser.InfoPrefix, string.Empty);
-            if (string.IsNullOrWhiteSpace(languageCode))
+            if (string.IsNullOrWhiteSpace(languageCode) || !PrismSupportedLanguages.IsSupportedLanguage(languageCode))
             {
                 codeBlockRenderer.Write(renderer, node);
                 return;

@@ -26,6 +26,8 @@ Use **docker** command to build the imaage from this Dockerfile.
 
         private static readonly string TestMarkdownWithoutLanguage = "Use ```docker run .``` command to build the image";
 
+        private static readonly string TestMarkdownWithUnsupportedLanguage = "Simple graph ```mermaid graph TD; A --> B``` as an example";
+
         private static readonly MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
                 .UseAdvancedExtensions()
                 .UsePrism()
@@ -59,6 +61,20 @@ Use **docker** command to build the imaage from this Dockerfile.
             var code = doc.DocumentNode.SelectSingleNode("//code");
             Assert.IsNotNull(code);
             Assert.AreEqual("docker run .", code.InnerHtml);
+        }
+
+        [TestMethod]
+        public void UseDefaultCodeBlockRendererIfLanguageIsNotSupported()
+        {
+            var html = Markdown.ToHtml(TestMarkdownWithUnsupportedLanguage, pipeline);
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var pre = doc.DocumentNode.SelectSingleNode("//pre");
+            Assert.IsNull(pre);
+            var code = doc.DocumentNode.SelectSingleNode("//code");
+            Assert.IsNotNull(code);
+            Assert.AreEqual("mermaid graph TD; A --&gt; B", code.InnerHtml);
         }
     }
 }
