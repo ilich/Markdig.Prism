@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Versioning;
 using System.Text;
+using System.Web;
 using Markdig.Parsers;
 using Markdig.Renderers;
 using Markdig.Renderers.Html;
@@ -37,13 +38,14 @@ namespace Markdig.Prism
             attributes.AddClass($"language-{languageCode}");
 
             var code = ExtractSourceCode(node);
+            var escapedCode = HttpUtility.HtmlEncode(code);
 
             renderer
                 .Write("<pre>")
                 .Write("<code")
                 .WriteAttributes(attributes)
                 .Write(">")
-                .Write(code)
+                .Write(escapedCode)
                 .Write("</code>")
                 .Write("</pre>");
         }

@@ -8,7 +8,6 @@
     <Copyright>Copyright © 2020 Ilya Verbitskiy</Copyright>
     <PackageProjectUrl>https://github.com/ilich/Markdig.Prism</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ilich/Markdig.Prism</RepositoryUrl>
-    <RepositoryType></RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>markdown markdig</PackageTags>
     <PackageId>WebStoating.Markdig.Prism</PackageId>
