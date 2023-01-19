@@ -1,4 +1,6 @@
-﻿using System.Runtime.Versioning;
+﻿using System;
+using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Web;
 using Markdig.Parsers;
@@ -16,6 +18,11 @@ namespace Markdig.Prism
         {
             this.codeBlockRenderer = codeBlockRenderer ?? new CodeBlockRenderer();
         }
+
+        private readonly string[] xmlLikeLanguages = new[]
+        {
+            "xml", "xml-doc", "html"
+        };
 
         protected override void Write(HtmlRenderer renderer, CodeBlock node)
         {
@@ -36,18 +43,33 @@ namespace Markdig.Prism
 
             var attributes = new HtmlAttributes();
             attributes.AddClass($"language-{languageCode}");
-
+            
             var code = ExtractSourceCode(node);
             var escapedCode = HttpUtility.HtmlEncode(code);
 
-            renderer
-                .Write("<pre>")
-                .Write("<code")
-                .WriteAttributes(attributes)
-                .Write(">")
-                .Write(escapedCode)
-                .Write("</code>")
-                .Write("</pre>");
+            if (xmlLikeLanguages.Contains(languageCode))
+            {
+                // Support markup languages
+                // https://prismjs.com/plugins/unescaped-markup/
+                renderer
+                    .Write("<script type='text/plain'")
+                    .WriteAttributes(attributes)
+                    .Write(">")
+                    .Write(escapedCode)
+                    .Write("</script>");
+            }
+            else
+            {
+                renderer
+                    .Write("<pre>")
+                    .Write("<code")
+                    .WriteAttributes(attributes)
+                    .Write(">")
+                    .Write(escapedCode)
+                    .Write("</code>")
+                    .Write("</pre>");
+
+            }
         }
 
         protected string ExtractSourceCode(LeafBlock node)
