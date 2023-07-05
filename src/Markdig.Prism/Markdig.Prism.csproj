@@ -10,7 +10,8 @@
     <RepositoryUrl>https://github.com/ilich/Markdig.Prism</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>markdown markdig</PackageTags>
-    <PackageId>WebStoating.Markdig.Prism</PackageId>
+    <PackageId>WebStoating.Markdig.PrismWithPlugins</PackageId>
+    <Title>PrismJS with plugins</Title>
   </PropertyGroup>
 
   <ItemGroup>
