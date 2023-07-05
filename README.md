@@ -9,7 +9,7 @@ This forked version includes additional features such as a download button for c
 1. Add this forked version of `Markdig.Prism` to your project.
 
 ```powershell
-dotnet add package YourPackageName --version 1.0.0
+dotnet add package WebStoating.Markdig.PrismWithPlugins --version 1.0.0
 ```
 
 2. Create Markdig pipeline
@@ -21,7 +21,7 @@ private static readonly MarkdownPipeline MarkdownPipeline = new MarkdownPipeline
     .Build();
 ```
 
-3. Download [Prism](https://prismjs.com/download.html) and add it to your Razor page or layout template. Make sure to include the additional JavaScript required for the new features.
+3. Download [Prism](https://prismjs.com/download.html) and add it to your Razor page or layout template. Make sure to include the additional JavaScript required for the plugins.
 
 ```html
 <!DOCTYPE html>
@@ -33,6 +33,7 @@ private static readonly MarkdownPipeline MarkdownPipeline = new MarkdownPipeline
 <body>
 	...
 	<script src="prism.js"></script>
+	<!--This would be where to put the aditiional javascript if needed for the plugin you need-->
 	<script src="yourAdditionalScript.js"></script>
 </body>
 </html>
