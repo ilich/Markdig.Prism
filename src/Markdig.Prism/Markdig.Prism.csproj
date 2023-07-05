@@ -2,16 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Ilya Verbitskiy</Authors>
+    <Authors>Ilya Verbitskiy, Emil Schütt</Authors>
     <Company>WebStoating s.r.o.</Company>
-    <Description>Syntax highlighting for Markdig using Prism.js library</Description>
-    <Copyright>Copyright © 2020 Ilya Verbitskiy</Copyright>
-    <PackageProjectUrl>https://github.com/ilich/Markdig.Prism</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ilich/Markdig.Prism</RepositoryUrl>
+    <Description>A fork of WebStoating.Markdig.Prism that was made by Ilya Verbitskiy
+
+Syntax highlighting for Markdig using Prism.js library and options for plugins, more to come, link to original package https://github.com/ilich/Markdig.Prism </Description>
+    <Copyright>Copyright © 2023 Emil Schütt</Copyright>
+    <PackageProjectUrl>https://github.com/Retrokiller543/Markdig.Prism</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Retrokiller543/Markdig.Prism</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>markdown markdig</PackageTags>
-    <PackageId>WebStoating.Markdig.Prism</PackageId>
+    <PackageTags>markdown markdig prism</PackageTags>
+    <PackageId>WebStoating.Markdig.PrismWithPlugins</PackageId>
+    <Title>PrismJS with plugins</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>This version added the UseDownloadBotton and UseLineNumbers to the pipeline.</PackageReleaseNotes>
+    <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.22.0" />

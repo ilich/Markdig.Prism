@@ -4,7 +4,17 @@
     {
         public static MarkdownPipelineBuilder UsePrism(this MarkdownPipelineBuilder pipeline)
         {
-            pipeline.Extensions.Add(new PrismExtension());
+            PrismOptions options = new PrismOptions();
+            pipeline.Extensions.Add(new PrismExtension(options));
+            return pipeline;
+        }
+        public static MarkdownPipelineBuilder UsePrism(this MarkdownPipelineBuilder pipeline, PrismOptions options)
+        {
+            if (options == null)
+            {
+                options = new PrismOptions();
+            }
+            pipeline.Extensions.Add(new PrismExtension(options));
             return pipeline;
         }
     }
